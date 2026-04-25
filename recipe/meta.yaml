@@ -16,18 +16,18 @@ build:
     - gridspec-dump = gridspec.cli:dump
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
-  number: 0
+  number: 1
 
 requirements:
   host:
     - pip
-    - python >=3.6
+    - python {{ python_min }}
   run:
     - click
     - netcdf4
     - numpy
     - pygeohash
-    - python >=3.6
+    - python >={{ python_min }}
     - xarray
 
 test:
@@ -40,6 +40,7 @@ test:
     - gridspec-dump --help
   requires:
     - pip
+    - python {{ python_min }}
 
 about:
   home: https://github.com/LiamBindle/gridspec
